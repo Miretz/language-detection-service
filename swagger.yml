@@ -1,0 +1,51 @@
+swagger: '2.0'
+info:
+  title: Language Detection API
+  version: "0.1"
+
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api"
+
+# Paths supported by the server application
+paths:
+  /languages:
+    post:
+      operationId: "language.detect"
+      tags:
+        - "Languages"
+      summary: "Detect languages"
+      description: "Returns the languages recognized by language detection libraries."
+      parameters:
+        - name: input
+          description: "Input text for detection"
+          required: true
+          in: body
+          schema:
+            type: object
+            properties:
+              text:
+                type: string          
+      responses:
+        200:
+          description: "Successful language detection operation"
+          schema:
+            type: "object"
+            properties:
+              text:
+                type: "string"
+              length:
+                type: "string"
+              langdetect:
+                type: "object"
+              langid:
+                type: "object"
+              overallLanguage:
+                type: "string"
+              languagesDetected:
+                type: "array"
+                items:
+                  type: "string"

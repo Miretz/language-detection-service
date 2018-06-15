@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Langservice</title>
+    <style>
+        code {
+            display: block;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+<h1>Language Detection UI</h1>
+
+<h2>API</h2>
+<table border="1px solid #333" cellpadding="2px" cellspacing="0">
+    <tr>
+        <th>URL</th>
+        <th>Http Method</th>
+        <th>Request example</th>
+        <th>Response example</th>
+    </tr>
+    <tr>
+        <td>/api/languages</td>
+        <td>POST</td>
+        <td>
+            <code>{
+  "text":"This is a sample text."
+}</code>
+        </td>
+        <td>
+            <code>{
+  "langdetect":{"en":0.9999983771056983},
+  "langid":{"en":0.999999990990354},
+  "text":"This is a sample text.",
+  "length":22
+}</code>
+        </td>
+    </tr>
+</table>
+<br/>
+<br/>
+<h2>Test the API</h2>
+<label for="source">Input text: </label><textarea rows="4" cols="50" id="source">
+This is a sample text.
+</textarea>
+<br/>
+<button id="translate" type="button">Detect Language</button>
+<hr/>
+<br/>
+Language Detection Result:
+<div id="result" style="font-size:20px;"></div>
+<br/>
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+
+    $('#translate').mousedown(function (e) {
+        var data = $('#source').val();
+        var resultDiv = $('#result');
+
+        resultDiv.empty();
+        resultDiv.append("Processing...");
+
+        $.ajax({
+            type: "POST",
+            url: '/api/languages',
+            contentType: 'application/json',
+            async: false,
+            data: JSON.stringify({"text": data})
+        }).done(function (response) {
+            resultDiv.empty();
+            resultDiv.append(JSON.stringify(response));
+        }).fail(function (response) {
+            resultDiv.empty();
+            resultDiv.append(JSON.stringify(response));
+        });
+    });
+
+</script>
+</body>
+</html>
+
