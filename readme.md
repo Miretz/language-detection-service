@@ -2,6 +2,7 @@
 
 - Service is using the Flask framework
 - Libraries for detection: Langid.py, Langdetect
+- Can be packaged and deployed as a microservice
 
 ## Setup
 ```
@@ -16,7 +17,7 @@ Navigate to http://localhost:5000/
 
 You should see the basic UI:
 
-<img src="screenshots/ui.png">
+<img src="screenshots/gui.png">
 
 
 ## Swagger UI - API Documentation
