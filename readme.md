@@ -3,6 +3,7 @@
 - Service is using the Flask framework
 - Libraries for detection: Langid.py, Langdetect
 - Can be packaged and deployed as a microservice
+- Swagger API documentation and UI included
 
 ## Setup
 ```
@@ -36,3 +37,7 @@ gunicorn --config gunicorn_config.py main:app
 Navigate to http://localhost:5000/
 
 Note: Windows is not supported by Gunicorn.
+
+## Dockerfile
+
+- Basic Dockerfile included, please modify it to suit your needs.
