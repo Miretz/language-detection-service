@@ -41,3 +41,22 @@ Note: Windows is not supported by Gunicorn.
 ## Dockerfile
 
 - Basic Dockerfile included, please modify it to suit your needs.
+
+### Run from docker for beginners
+
+Install Docker on your machine. See: https://store.docker.com/
+
+
+Build the container and start
+```
+docker build -t language-detection .
+docker run -d -p 80:5000 --name language-detection language-detection
+```
+
+You can now access the application via port 80.
+
+
+To stop the container:
+```
+docker container stop language-detection
+```

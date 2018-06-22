@@ -1,5 +1,6 @@
 from datetime import datetime
 from language_detection import detect_language
+import six
 
 from flask import ( 
     request,  
@@ -19,7 +20,7 @@ def detect(input):
     
     text = input['text'].strip()
 
-    if type(text) != str:
+    if isinstance(text, six.string_types) is False:
         abort(400, description="Required text parameter is missing")
     
     if len(text) == 0:

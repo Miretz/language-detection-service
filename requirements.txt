@@ -4,3 +4,4 @@ langid
 langdetect
 gunicorn
 connexion
+six

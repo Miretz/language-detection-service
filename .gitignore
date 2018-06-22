@@ -14,5 +14,7 @@ _mailinglist
 .cache/
 .pytest_cache/
 .idea/
+.vscode/
 docs/_build/
 __pycache__/
+
