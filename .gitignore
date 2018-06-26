@@ -17,4 +17,5 @@ _mailinglist
 .vscode/
 docs/_build/
 __pycache__/
+*.jar
 

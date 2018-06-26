@@ -3,18 +3,17 @@ info:
   title: Language Detection API
   version: "0.1"
 
-consumes:
-  - "application/json"
-produces:
-  - "application/json"
-
 basePath: "/api"
 
 # Paths supported by the server application
 paths:
   /languages:
     post:
-      operationId: "language.detect"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      operationId: "service.detect"
       tags:
         - "Languages"
       summary: "Detect languages"
@@ -29,6 +28,43 @@ paths:
             properties:
               text:
                 type: string          
+      responses:
+        200:
+          description: "Successful language detection operation"
+          schema:
+            type: "object"
+            properties:
+              text:
+                type: "string"
+              length:
+                type: "string"
+              langdetect:
+                type: "object"
+              langid:
+                type: "object"
+              overallLanguage:
+                type: "string"
+              languagesDetected:
+                type: "array"
+                items:
+                  type: "string"
+  /upload:
+    post:
+      consumes:
+        - "multipart/form-data"
+      produces:
+        - "application/json"
+      operationId: "service.detect_from_file"
+      tags:
+        - "Languages"
+      summary: "Detect languages from uploaded file"
+      description: "Returns the languages recognized in the file by language detection libraries."
+      parameters:
+        - name: uploadedFile
+          description: "Input file for detection"
+          required: true
+          in: formData
+          type: file         
       responses:
         200:
           description: "Successful language detection operation"

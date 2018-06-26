@@ -5,3 +5,4 @@ langdetect
 gunicorn
 connexion
 six
+tika-app

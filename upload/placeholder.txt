@@ -1,0 +1,2 @@
+Directory for uploaded files
+Modify UPLOAD_DIR in main.py to change it.

@@ -1,0 +1,1 @@
+Dowload the tika-app-1.18.jar file from https://tika.apache.org/.
