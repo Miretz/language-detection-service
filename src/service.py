@@ -1,7 +1,5 @@
-from language_detection import LanguageDetection
 import six
 import os
-from tika_parser import TikaParser
 from werkzeug.utils import secure_filename
 import traceback
 
@@ -11,6 +9,9 @@ from flask import (
     abort,
     current_app
 )
+
+from tika_parser import TikaParser
+from language_detection import LanguageDetection
 
 MAX_TEXT_LENGTH = 1000000
 ALLOWED_EXTENSIONS = set(

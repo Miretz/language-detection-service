@@ -7,7 +7,7 @@ from flask import (
 
 import connexion
 
-UPLOAD_DIR = "upload"
+UPLOAD_DIR = "../upload"
 
 app = connexion.App(__name__, specification_dir='./')
 app.add_api('swagger.yml')

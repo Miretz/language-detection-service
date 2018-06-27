@@ -16,7 +16,7 @@ To be able to process documents you need the tika library.
 Download the tika-app.jar file from https://tika.apache.org/ and place it into the lib/ folder.
 For example using wget:
 ```
-wget http://www-eu.apache.org/dist/tika/tika-app-1.18.jar -P lib/
+wget http://www-eu.apache.org/dist/tika/tika-app-1.18.jar -P src/lib/
 ```
 
 Install required python libraries:
@@ -26,11 +26,56 @@ pip install -r requirements.txt
 
 ## Run - Development mode
 ```
+cd src
 python main.py
 ```
 Navigate to http://localhost:5000/
 
-You should see the basic UI:
+
+## Run - Production mode using Gunicorn
+```
+cd src
+gunicorn --config gunicorn_config.py main:app
+```
+Navigate to http://localhost:5000/
+
+Note: Windows is not supported by Gunicorn.
+
+
+## Run in Docker - recommended
+
+### Run using docker-compose
+
+Build/rebuild the container (build). Start the container (up). 
+```
+docker-compose build
+docker-compose up
+```
+
+You can now access the application on port 80.
+
+
+### Run using docker
+
+Build the container and start
+```
+docker build -t language-detection .
+docker run -d -p 80:5000 --name language-detection language-detection
+```
+
+You can now access the application on port 80.
+
+To stop the container:
+```
+docker container stop language-detection
+```
+
+
+# Frontend & API
+
+## Frontend - Work in progress
+
+Right now the application has a basic UI:
 
 <img src="screenshots/gui.png">
 
@@ -42,45 +87,3 @@ Navigate to http://localhost:5000/api/ui/
 You should see the Swagger UI:
 
 <img src="screenshots/swagger.png">
-
-
-## Run - Production mode using Gunicorn
-```
-gunicorn --config gunicorn_config.py main:app
-```
-Navigate to http://localhost:5000/
-
-Note: Windows is not supported by Gunicorn.
-
-## Dockerfile
-
-- Basic Dockerfile included, please modify it to suit your needs.
-
-### Run from docker for beginners
-
-Install Docker on your machine. See: https://store.docker.com/
-
-
-Build the container and start
-```
-docker build -t language-detection .
-docker run -d -p 80:5000 --name language-detection language-detection
-```
-
-You can now access the application via port 80.
-
-
-To stop the container:
-```
-docker container stop language-detection
-```
-
-### Run using docker-compose
-
-Use build to build/rebuild the container.
-Use up to run it.
-
-```
-docker-compose build
-docker-compose up
-```
