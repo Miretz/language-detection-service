@@ -6,13 +6,19 @@ from flask import (
 )
 
 import connexion
+from flask_cors import CORS
 
 UPLOAD_DIR = "../upload"
 
 app = connexion.App(__name__, specification_dir='./')
+
 app.add_api('swagger.yml')
 app.app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.app.config['UPLOAD_DIR'] = UPLOAD_DIR
+
+# add CORS support
+CORS(app.app)
+
 port = int(os.getenv("PORT", 5000))
 
 
