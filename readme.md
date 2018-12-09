@@ -88,13 +88,3 @@ You should see the Swagger UI:
 
 <img src="screenshots/swagger.png">
 
-## React based frontend - Work in progress
-
-I will use react.js and a bunch of libraries.
-The idea is to visualize language detection as you type and plot the probabilities (TODO).
-
-Start frontend:
-```
-cd frontend
-npm start
-```
